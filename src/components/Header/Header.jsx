@@ -7,7 +7,6 @@ export function Header() {
         src={igniteLogo}
         alt="Logo com o símbolo triangular da cor verde do IGNITE"
       />
-      <strong>Ignite Feed</strong>
     </header>
   );
 }
