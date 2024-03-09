@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Post } from "./components/Post/index";
+import { Post } from "./components/Post/Post";
 import "./global.css";
 import styles from "./App.module.css";
 import { Header } from "./components/Header/Header";
