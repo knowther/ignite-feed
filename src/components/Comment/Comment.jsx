@@ -14,10 +14,10 @@ export function Comment() {
                 <time title="29 de Março de 2024" dateTime="2024-03-29">
                   há quase 1 ano
                 </time>
-                <button title="Deletar Comentário">
-                  <Trash size={20} />
-                </button>
               </div>
+              <button title="Deletar Comentário">
+                <Trash size={24} />
+              </button>
             </header>
             <p>Muito bom Johnny, parabéns!!</p>
           </div>
