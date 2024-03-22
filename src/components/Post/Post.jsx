@@ -12,10 +12,18 @@ export function Post({ avatarUrl, name, role, publishedAt, content }) {
     { locale: ptBR }
   );
 
+  const comments = [1, 2, 3];
+
   const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
     locale: ptBR,
     addSuffix: true,
   });
+
+  function handleCreateNewComment() {
+    event.preventDefault();
+    comments.push(4);
+  }
+
   return (
     <>
       <article className={styles.post}>
@@ -39,7 +47,7 @@ export function Post({ avatarUrl, name, role, publishedAt, content }) {
             return createPost(line.type, line.content);
           })}
         </div>
-        <form className={styles.commentForm}>
+        <form onSubmit={handleCreateNewComment} className={styles.commentForm}>
           <strong>Deixe seu feedback</strong>
           <textarea placeholder="Deixe um comentário..."></textarea>
 
@@ -48,7 +56,9 @@ export function Post({ avatarUrl, name, role, publishedAt, content }) {
           </footer>
         </form>
         <div className={styles.commentList}>
-          <Comment />
+          {comments.map(() => {
+            return <Comment />;
+          })}
         </div>
       </article>
     </>
