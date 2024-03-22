@@ -1,15 +1,21 @@
 import styles from "./Post.module.css";
+import { format, formatDistanceToNow } from "date-fns";
+import { ptBR } from "date-fns/locale";
 import { Comment } from "../Comment/Comment";
 import { Avatar } from "../Avatar/Avatar";
 import { createPost } from "../../utils/CreatePostTextHandler";
 
 export function Post({ avatarUrl, name, role, publishedAt, content }) {
-  const publishedDateFormated = new Intl.DateTimeFormat("pt-BR", {
-    day: "2-digit",
-    month: "long",
-    hour: "2-digit",
-    minute: "2-digit",
-  }).format(publishedAt);
+  const publishedDateFormated = format(
+    publishedAt,
+    "d 'de' LLLL 'ás' HH:mm'h'",
+    { locale: ptBR }
+  );
+
+  const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
+    locale: ptBR,
+    addSuffix: true,
+  });
   return (
     <>
       <article className={styles.post}>
@@ -21,8 +27,11 @@ export function Post({ avatarUrl, name, role, publishedAt, content }) {
               <span>{role}</span>
             </div>
           </div>
-          <time title="29 de Março de 2024" dateTime="2024-03-29">
-            {publishedDateFormated}
+          <time
+            title={publishedDateFormated}
+            dateTime={publishedAt.toISOString()}
+          >
+            {publishedDateRelativeToNow}
           </time>
         </header>
         <div className={styles.content}>
